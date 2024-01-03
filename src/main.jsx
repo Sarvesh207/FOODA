@@ -11,6 +11,7 @@ import RestaurantMenu from "./components/Home/RestaurantMenu/RestaurantMenu.jsx"
 import Cart from "../src/components/Cart/Cart.jsx";
 import Search from "../src/components/Search/Search.jsx";
 import SearchedItem from "./components/Search/SearchedItem.jsx";
+import Header from "./components/Header.jsx";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "/search-item",
         element: <SearchedItem />,
+      },
+      {
+        path: "/nav",
+        element: <Header />,
       },
       {
         path: "/cart",

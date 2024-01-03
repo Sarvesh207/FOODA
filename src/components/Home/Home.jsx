@@ -45,17 +45,17 @@ const Home = () => {
 
   async function getRestaurrants() {
     const data = await fetch(
-      "https://erin-glamorous-earthworm.cyclic.app/api/proxy/swiggy/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&sortBy=RELEVANCE&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&sortBy=RELEVANCE&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
     console.log(json)
 
     const restraunts =
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
 
     setAllRestaurants(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     dispatch(setRestarunts(restraunts));
   }
@@ -99,7 +99,7 @@ const Home = () => {
         responsive={responsive}
         transitionDuration={500}
         infinite={true}
-        className="bg-slate-50 px-14 py-7  "
+        className="bg-slate-50 px-14 py-7  mt-28 "
       >
         {bannerList.map((image, i) => {
           return <Carousal image={image} key={i} />;
