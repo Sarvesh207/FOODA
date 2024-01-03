@@ -3,41 +3,47 @@ import { Link } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import { GrCart } from "react-icons/gr";
 import { IoCloseSharp } from "react-icons/io5";
+import { Company_LOGO } from "../constant";
 
 const Header = () => {
   const [isSideMenu, setIsSideMenu] = useState(false);
   const navLinks = [
     {
-      label: "Collections",
+      label: "Search",
       link: "#",
     },
     {
-      label: "Mens",
+      label: "Offer",
       link: "#",
     },
     {
-      label: "About",
+      label: "Help",
       link: "#",
     },
-    {
-      label: "Contact",
-      link: "#",
-    },
+    
   ];
+
+  
+
   return (
     <main>
-        <nav className="flex fixed top-0 left-0 right-0  z-50 bg-slate-900 justify-between px-8 py-6 items-center">
-            <div className="flex  items-center gap-8">
-                <section className="flex items-center gap-4"> 
-                    <FiMenu className="3xl cursor-pointer lg:hidden" onClickk={() => setIsSideMenu(true)} />
+        <nav className="flex fixed top-0 left-0 right-0  z-50 bg-white justify-between px-8 py-6 items-center">
+            <div className="flex items-center justify-between gap-10">
+                <section className="flex items-center gap-8"> 
+                    <FiMenu className="3xl cursor-pointer lg:hidden" onClick={() => setIsSideMenu(true)} />
                     {/* logo */}
-                    <Link className="text-4xl">Logo</Link>
+                    <Link className="text-3xl ">
+                      <img src={Company_LOGO} alt="vompanyLogo" />
+                    </Link>
                 </section>
+                {/* Navlinks for large screen */}
+                <div className=" flex items-center gap-6 ">
                 {navLinks.map((navItem) => (
-                <Link className="hidden lg:block text-gray-400 hover:text-black " key={navItem.label} href={navItem.link}>
+                <Link className="hidden lg:block text-[#757884] hover:text-[#fc8019]   mx-4 " key={navItem.label} href={navItem.link}>
                     {navItem.label}
                 </Link>
                 ))}
+                </div>
             </div>
 
             {/* side bar mobile menu */}
@@ -46,7 +52,7 @@ const Header = () => {
                 <IoCloseSharp className="mt-0 mb-8 text-3xl cursor-pointer" onClick={() => setIsSideMenu(false)} />
 
                 {navLinks.map((navItem) => (
-                <Link className="font-bold " key={navItem.label} href={navItem.link}>
+                <Link className="font-bold text-[#757884] hover:text-[#fc8019] " key={navItem.label} href={navItem.link}>
                     {navItem.label}
                 </Link>
                 ))}
@@ -54,7 +60,7 @@ const Header = () => {
             </div>
 
             {/* Last Section */}
-            <section className="flex items-center gap-4">
+            <section className="flex items-center gap-4 text-[#757884] hover:text-[#fc8019]">
             <GrCart className="text-3xl" />
             </section>
         </nav>

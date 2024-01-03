@@ -2,6 +2,8 @@ export const IMG_CDN_URL = "https://res.cloudinary.com/swiggy/image/upload/fl_lo
 export const CAROUSAL_IMG_CDN = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_520,h_520/"
 export const FETCH_RESTAURANT_URL = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9715987&lng=77.5945627&restaurantId="
 
+export const Company_LOGO="https://www.fooda.com/themes/custom/fooda/images/logo.png";
+
 export const RestrauntList = [
     {
       type: "restaurant",
