@@ -14,8 +14,9 @@ import RestaurantMenu from "./components/Home/RestaurantMenu/RestaurantMenu.jsx"
 import Cart from "../src/components/Cart/Cart.jsx";
 import Search from "../src/components/Search/Search.jsx";
 import SearchedItem from "./components/Search/SearchedItem.jsx";
-
+import LandingPage from "./pages/LandingPage.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 const App = () => {
   return (
     <Router>
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/landing" element={<LandingPage />} />
         </Routes>
         <Footer/>
       </Provider>

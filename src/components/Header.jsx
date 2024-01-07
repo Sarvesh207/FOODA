@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import { GrCart } from "react-icons/gr";
 import { IoCloseSharp } from "react-icons/io5";
-import { Company_LOGO } from "../constant";
+import { COMPANY_LOGO } from "../constant";
 import { IoSearch } from "react-icons/io5";
 import { IoIosHelpCircleOutline } from "react-icons/io";
 import { BiSolidOffer } from "react-icons/bi";
@@ -40,7 +40,7 @@ const Header = () => {
                     <FiMenu className="3xl cursor-pointer lg:hidden" onClick={() => setIsSideMenu(true)} />
                     {/* logo */}
                     <Link className="text-3xl ">
-                      <img src={Company_LOGO} alt="CompanyLogo" className="w-24 bg-[#fc8019]" />
+                      <img src={COMPANY_LOGO} alt="CompanyLogo" className="w-24 bg-[#fc8019]" />
                     </Link>
                 </section>
                 {/* Navlinks for large screen */}
