@@ -21,7 +21,7 @@ const LandingPage = () => {
 
     const fetchAddress = async (place_id) => {
         try {
-            const res = await fetch(ADDRESS_API + place_id);
+            const res = await fetch(`https://www.swiggy.com/dapi/misc/address-recommend?place_id=${place_id}`);
             if (!res.ok) {
                 const error = res.status;
                 throw new Error(error);

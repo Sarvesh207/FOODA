@@ -4,8 +4,7 @@ import Footer from "./components/Footer/Footer.jsx";
 import Header from "./components/Header.jsx";
 
 import { Outlet } from "react-router-dom";
-import store from "./utils/Store.js";
-import { Provider } from "react-redux";
+
 import Contact from "./components/Contact/Contact.jsx";
 import About from "./components/About/About.jsx";
 import Error from "./components/Error.jsx";
@@ -16,14 +15,16 @@ import Search from "../src/components/Search/Search.jsx";
 import SearchedItem from "./components/Search/SearchedItem.jsx";
 import LandingPage from "./pages/LandingPage.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const App = () => {
+  const userLocation = useSelector((store) => store.location.userLocation)
   return (
     <Router>
-      <Provider store={store}>
-      <Header/>
+     
+       userLocation && <Header/>
         <Routes>
-          
+         userLocation ? <>
           <Route path="/" element={<Home />} />
           {/* <Route path="/restaurants/:resId" element={<Home/>}/> */}
           <Route path="/search" element={<Search />} />
@@ -31,10 +32,10 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/landing" element={<LandingPage />} />
+        </> : <Route path="/" element={<LandingPage />} />
         </Routes>
         <Footer/>
-      </Provider>
+      
     </Router>
   );
 };
