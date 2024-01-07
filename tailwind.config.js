@@ -18,7 +18,12 @@ export default {
       '2xl': '1536px',
       // => @media (min-width: 1536px) { ... }
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        palanquin: ['Palanquin', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 }

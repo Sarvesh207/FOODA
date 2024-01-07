@@ -4,6 +4,9 @@ import { FiMenu } from "react-icons/fi";
 import { GrCart } from "react-icons/gr";
 import { IoCloseSharp } from "react-icons/io5";
 import { Company_LOGO } from "../constant";
+import { IoSearch } from "react-icons/io5";
+import { IoIosHelpCircleOutline } from "react-icons/io";
+import { BiSolidOffer } from "react-icons/bi";
 
 const Header = () => {
   const [isSideMenu, setIsSideMenu] = useState(false);
@@ -11,14 +14,18 @@ const Header = () => {
     {
       label: "Search",
       link: "#",
+      icons:IoSearch,
+
     },
     {
       label: "Offer",
       link: "#",
+      icons:BiSolidOffer,
     },
     {
       label: "Help",
       link: "#",
+      icons:IoIosHelpCircleOutline
     },
     
   ];
@@ -33,13 +40,13 @@ const Header = () => {
                     <FiMenu className="3xl cursor-pointer lg:hidden" onClick={() => setIsSideMenu(true)} />
                     {/* logo */}
                     <Link className="text-3xl ">
-                      <img src={Company_LOGO} alt="vompanyLogo" />
+                      <img src={Company_LOGO} alt="CompanyLogo" className="w-24 bg-[#fc8019]" />
                     </Link>
                 </section>
                 {/* Navlinks for large screen */}
                 <div className=" flex items-center gap-6 ">
                 {navLinks.map((navItem) => (
-                <Link className="hidden lg:block text-[#757884] hover:text-[#fc8019]   mx-4 " key={navItem.label} href={navItem.link}>
+                <Link className="hidden lg:block text-[#757884] hover:text-[#fc8019] font-palanquin font-bold  mx-4 " key={navItem.label} href={navItem.link}>
                     {navItem.label}
                 </Link>
                 ))}

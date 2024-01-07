@@ -51,11 +51,11 @@ const Home = () => {
     console.log(json)
 
     const restraunts =
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
 
     setAllRestaurants(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     dispatch(setRestarunts(restraunts));
   }
