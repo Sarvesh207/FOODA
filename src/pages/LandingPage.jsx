@@ -15,6 +15,7 @@ const LandingPage = () => {
     const dispatch = useDispatch();
 
     const handleSearch = (searchQuery) => {
+        console.log(searchQuery)
         useSearchLocation(searchQuery, setSearchData);
     }
 
@@ -56,7 +57,7 @@ const LandingPage = () => {
 
               const randomIndex = Math.floor(Math.random() * texts.length);
               setChangingText(texts[randomIndex]);
-        }, 3000)
+        }, 2000)
 
         return () => {
             clearInterval(timer);
@@ -81,13 +82,41 @@ const LandingPage = () => {
                             <input type="text" placeholder='Enter your delivery location' ref={SearchText} onChange={() => handleSearch(SearchText.current?.value)} className="h-[58px] border border-gray-400 w-full px-5 font-ProximaNovaMed text-lg outline-none rounded-lg text-[#282c3f]" />
                             <ul className='absolute top-[58px] left-0 right-0 border border-t-0 border-[#d4d5d9] shadow-lg w-full bg-white text-[#535665] z-10'>
                                 {
-                                    searchData && searchData?.map((item) => (
-                                        <li key={item?.place_id} className="cursor-pointer py-4 sm:py-6 px-3 sm:px-5 font-ProximaNovaMed text-sm sm:text-base border-dashed border-[#bebfc5] border-t-0 border-l-0 border-r-0 flex items-center gap-5" onClick={() => fetchAddress(item?.place_id)}>
-                                            <div className="text-xl">
-                                                <CiLocationOn />
-                                            </div>
-                                            <p>{item?.description}</p>
-                                        </li>
+                                    searchData && searchData?.map((location) => (
+                                        <li
+                                        className="mt-5 pb-4 border-dotted border-b-2  flex hover:bg-slate-200 rounded-md px-3 py-2 cursor-pointer"
+                                        key={location?.place_id}  onClick={() => fetchAddress(location?.place_id)}
+                                      >
+                                        <svg
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          fill="none"
+                                          viewBox="0 0 24 24"
+                                          stroke-width="1.5"
+                                          stroke="currentColor"
+                                          className="w-5 h-5 mr-2"
+                                        >
+                                          <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+                                          />
+                                          <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+                                          />
+                                        </svg>
+                      
+                                        <div>
+                                          <h3 className="text-black text-sm">
+                                            {location?.structured_formatting?.main_text}
+                                          </h3>
+                      
+                                          <p className="text-xs font-thin text-gray-500">
+                                            {location?.structured_formatting?.secondary_text}
+                                          </p>
+                                        </div>
+                                      </li>
                                     ))
                                 }
                             </ul>
