@@ -1,27 +1,30 @@
 import { useEffect, useState } from "react";
-import RestruantCard from "./RetaurrantCard/RestrurantCard.jsx";
-import Shimmer from "../Shimmer.jsx";
+import RestruantCard from "../components/RestaurantCard.jsx";
+import Shimmer from "../components/Shimmer.jsx";
 import { Link } from "react-router-dom";
-import { filterData } from "../../utils/helper.js";
-import useOnline from "../../utils/useOnline.js";
-import Carousal from "../Carousal.jsx";
+import { filterData } from "../utils/helper.js";
+import useOnline from "../utils/useOnline.js";
+import Carousal from "../components/Carousal.jsx";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import React from "react";
-import { bannerList } from "../../constant.js";
-import FilterNavbar from "./RestaurantMenu/FilterNavbar.jsx";
+import { bannerList } from "../constant.js";
+import FilterNavbar from "../components/FilterNavbar.jsx";
 import { useDispatch, useSelector } from "react-redux";
-import { setRestarunts } from "../../utils/filterSlice.js";
+import { setRestarunts } from "../utils/filterSlice.js";
+import useRestaurants from "../Hooks/useRestaurants.js";
 
 const Home = () => {
-  const [allRestaurants, setAllRestaurants] = useState([]);
+
+  const [restaurant, banner] = useRestaurants();
+  
 
   const dispatch = useDispatch();
+  dispatch(setRestarunts(restaurant))
   const restrauntsList = useSelector((store) => store.filter.restraunts);
+  console.log(restrauntsList)
 
-  useEffect(() => {
-    getRestaurrants();
-  }, []);
+ 
 
   const responsive = {
     superLargeDesktop: {
@@ -43,22 +46,7 @@ const Home = () => {
     },
   };
 
-  async function getRestaurrants() {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&sortBy=RELEVANCE&page_type=DESKTOP_WEB_LISTING"
-    );
-    const json = await data.json();
-    console.log(json)
 
-    const restraunts =
-      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants;
-
-    setAllRestaurants(
-      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    dispatch(setRestarunts(restraunts));
-  }
 
   const isOnline = useOnline();
 
@@ -70,9 +58,9 @@ const Home = () => {
     );
   }
 
-  if (!allRestaurants) return null;
+  if (!restaurant) return null;
 
-  return allRestaurants.length === 0 ? (
+  return restaurant.length === 0 ? (
     <Shimmer />
   ) : (
     <>

@@ -23,4 +23,5 @@ const useSearchLocation = async(searchQuery, setSearchData) => {
     }
 }
 
+
 export default useSearchLocation;

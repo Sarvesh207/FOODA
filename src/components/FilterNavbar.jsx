@@ -6,7 +6,7 @@ import {
   setPriceLowtoHighFilter,
   setRatingFilter,
   setIdFilter,
-} from "../../../utils/filterSlice.js";
+} from "../utils/filterSlice.js";
 
 const FilterNavbar = () => {
   const dispatch = useDispatch();

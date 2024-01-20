@@ -8,7 +8,7 @@ import { Outlet } from "react-router-dom";
 import Contact from "./components/Contact/Contact.jsx";
 import About from "./components/About/About.jsx";
 import Error from "./components/Error.jsx";
-import Home from "./components/Home/Home.jsx";
+import Home from "./pages/Home.jsx";
 import RestaurantMenu from "./components/Home/RestaurantMenu/RestaurantMenu.jsx";
 import Cart from "../src/components/Cart/Cart.jsx";
 import Search from "../src/components/Search/Search.jsx";
@@ -22,17 +22,18 @@ const App = () => {
   return (
     <Router>
      
-       userLocation && <Header/>
+       {userLocation && <Header/>}
         <Routes>
-         userLocation ? <>
-          <Route path="/" element={<Home />} />
-          {/* <Route path="/restaurants/:resId" element={<Home/>}/> */}
-          <Route path="/search" element={<Search />} />
-          <Route path="/help" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/cart" element={<Cart />} />
-        </> : <Route path="/" element={<LandingPage />} />
+        {userLocation ? <>
+            <Route path="/" element={<Home />} />
+            <Route path="/landing" element={<LandingPage/>}/>
+            <Route path="/search" element={<Search />} />
+            <Route path="/help" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/cart" element={<Cart />} />
+          </> : <Route path="/" element={<LandingPage />} />
+        }
         </Routes>
         <Footer/>
       

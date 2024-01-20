@@ -1,9 +1,10 @@
-import { IMG_CDN_URL } from "../../../constant.js";
+import { IMG_CDN_URL } from "../constant.js";
 import { AiFillStar } from "react-icons/ai";
 
 import React from "react";
 
-const RestruantCard = ({
+const RestaurantCard = ({
+  
   name,
   cuisines,
   cloudinaryImageId,
@@ -43,4 +44,4 @@ const RestruantCard = ({
     </div>
   );
 };
-export default RestruantCard;
+export default RestaurantCard;
