@@ -1,7 +1,7 @@
 import { Link, useRouteError } from "react-router-dom";
 import React from "react";
 const Error = () => {
-  const err = useRouteError();
+  
 
   return (
     <main className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">

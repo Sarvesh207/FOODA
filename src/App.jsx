@@ -1,21 +1,15 @@
 import React from "react";
 
+import { useSelector } from "react-redux";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import Cart from "../src/pages/Cart.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import Header from "./components/Header.jsx";
-
-import { Outlet } from "react-router-dom";
-
-import Contact from "./components/Contact/Contact.jsx";
-import About from "./components/About/About.jsx";
-import Error from "./components/Error.jsx";
+import Contact from "./pages/Contact.jsx";
 import Home from "./pages/Home.jsx";
-import RestaurantMenu from "./components/Home/RestaurantMenu/RestaurantMenu.jsx";
-import Cart from "../src/components/Cart/Cart.jsx";
-import Search from "../src/components/Search/Search.jsx";
-import SearchedItem from "./components/Search/SearchedItem.jsx";
 import LandingPage from "./pages/LandingPage.jsx";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useSelector } from "react-redux";
+import Search from "./pages/Search.jsx";
+import Error from "./pages/Error.jsx";
 
 const App = () => {
   const userLocation = useSelector((store) => store.location.userLocation)
@@ -26,16 +20,18 @@ const App = () => {
         <Routes>
         {userLocation ? <>
             <Route path="/" element={<Home />} />
-            <Route path="/landing" element={<LandingPage/>}/>
             <Route path="/search" element={<Search />} />
             <Route path="/help" element={<Home />} />
-            <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/signin" element={<Error />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="*" element={<Error />} />
+            
           </> : <Route path="/" element={<LandingPage />} />
         }
         </Routes>
         <Footer/>
+        
       
     </Router>
   );
