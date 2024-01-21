@@ -13,111 +13,51 @@ import FilterNavbar from "../components/FilterNavbar.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { setRestarunts } from "../utils/filterSlice.js";
 import useRestaurants from "../Hooks/useRestaurants.js";
+import SideCard from "../components/Cart/SideCard.jsx"
 
 const Home = () => {
+    const [restaurant, banner] = useRestaurants();
 
-  const [restaurant, banner] = useRestaurants();
-  
+    const dispatch = useDispatch();
+    dispatch(setRestarunts(restaurant));
+    const restrauntsList = useSelector((store) => store.filter.restraunts);
 
-  const dispatch = useDispatch();
-  dispatch(setRestarunts(restaurant))
-  const restrauntsList = useSelector((store) => store.filter.restraunts);
-  console.log(restrauntsList)
+    const isOnline = useOnline();
 
- 
+    if (!isOnline) {
+        return (
+            <div className="flex justify-center items-center ">
+                <h1>🔴 Offline please check your internet connection</h1>
+            </div>
+        );
+    }
 
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 4,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-    },
-  };
+    if (!restaurant) return null;
 
-
-
-  const isOnline = useOnline();
-
-  if (!isOnline) {
-    return (
-      <div className="flex justify-center items-center ">
-        <h1>🔴 Offline please check your internet connection</h1>
-      </div>
+    return restaurant.length === 0 ? (
+        <Shimmer />
+    ) : (
+        <>
+            <FilterNavbar />
+            <hr className="mx-40" />
+            <SideCard/>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 lg:gap-3 justify-items-center  lg:px-20 md:px10  px-15 ">
+                {restrauntsList &&
+                    restrauntsList.map((restaurant) => {
+                        return (
+                            <Link
+                                to={"/restaurant/" + restaurant.info.id}
+                                key={restaurant.info.id}
+                            >
+                                <RestruantCard {...restaurant.info} />
+                            </Link>
+                        );
+                    })}
+            </div>
+        </>
     );
-  }
-
-  if (!restaurant) return null;
-
-  return restaurant.length === 0 ? (
-    <Shimmer />
-  ) : (
-    <>
-      {/* <div className="searchContainer h-25  p-5 my-20 bg-sky-950 my-5 flex justify-center items-center ">
-        <input
-          type="text"
-          className="search-input text-center w-6/12"
-          placeholder="Search"
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
-        />
-        <button
-          className="search-btn p-2 m-2 bg-sky-500 hover:bg-sky-700   text-white rounded-lg"
-          onClick={() => {
-            const data = filterData(searchText, allRestaurants);
-            setFilteredRestaurants(data);
-          }}
-        >
-          Search
-        </button>
-      </div> */}
-
-      <Carousel
-        responsive={responsive}
-        transitionDuration={500}
-        infinite={true}
-        className="bg-slate-50 px-14 py-7  mt-28 "
-      >
-        {bannerList.map((image, i) => {
-          return <Carousal image={image} key={i} />;
-        })}
-      </Carousel>
-
-      <FilterNavbar />
-      <hr className="mx-40" />
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 lg:gap-3 justify-items-center  lg:px-20 md:px10  px-15 ">
-        {restrauntsList &&
-          restrauntsList.map((restaurant) => {
-            return (
-              <Link
-                to={"/restaurant/" + restaurant.info.id}
-                key={restaurant.info.id}
-              >
-                <RestruantCard {...restaurant.info} />
-              </Link>
-            );
-          })}
-      </div>
-    </>
-  );
 };
 
 export default Home;
 
-//https://www.swiggy.com/dapi/offers/restaurant?lat=18.5204303&lng=73.8567437&offset=0  complicated api
 
-// real new banglore api
-//https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&page_type=DESKTOP_WEB_LISTING
-
-// old good api https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING

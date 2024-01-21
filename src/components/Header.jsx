@@ -7,14 +7,20 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { COMPANY_LOGO } from "../constant";
 import { IoIosArrowDown } from "react-icons/io";
-
+import { useDispatch } from "react-redux";
+import { toggleLocation } from "../utils/toggleLocationSlice";
 
 const Header = () => {
     const [isSideMenu, setIsSideMenu] = useState(false);
     const cartItems = useSelector((store) => store.cart.items);
     const address = useSelector((store) => store.location.userLocation.address);
-
-    console.log(address);
+    const dispatch = useDispatch();
+    
+    const handleClick = () => {
+        dispatch(toggleLocation())
+        console.log("I am working")
+    }
+    
     const navLinks = [
         {
             label: "Search",
@@ -100,7 +106,7 @@ const Header = () => {
                             />
                         </Link>
                     </section>
-                    <div>
+                    <button className="hover:mouse-pointer" onClick={handleClick}>
                         <p className="flex gap-2 items-center">
                             <span className="font-bold text-sm text-gray-600 underline decoration-2 underline-offset-4 mb-2 hover:text-[#fc8019]">
                                 Other
@@ -110,7 +116,7 @@ const Header = () => {
                             </span>
                             <span className="text-gray-500 hover:text-[#fc8019]"> <IoIosArrowDown/> </span>
                         </p>
-                    </div>
+                    </button>
                     {/* Navlinks for large screen */}
                     <div className=" flex items-center gap-6 ">
                         {navLinks.map((navItem) => (

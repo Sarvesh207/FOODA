@@ -1,12 +1,10 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import Shimmer2 from "./Shimmer2";
+import React, { useEffect, useState } from "react";
 
-const Location = ({handleClick}) => {
+const Location = () => {
 
   const [query, setQuery] = useState("");
   const [locations, setLocations] = useState([]);
-  console.log(locations);
+  
 
   const getLocationsSuggestions = async () => {
     const res = await fetch(
@@ -18,7 +16,6 @@ const Location = ({handleClick}) => {
   };
   useEffect(() => {
     let intervalId = setTimeout(() => {
-      console.log(query);
       getLocationsSuggestions();
     }, 300);
 
@@ -33,22 +30,7 @@ const Location = ({handleClick}) => {
 
   return (
     <div>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth="1.5"
-        stroke="currentColor"
-        className="w-6 h-6 mb-7 text-lg cursor-pointer"
-        onClick={handleClick}
-       
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M6 18L18 6M6 6l12 12"
-        />
-      </svg>
+   
 
       <div className=" border-2 rounded-md px-4 py-2 shadow-lg">
         <input
@@ -90,7 +72,7 @@ const Location = ({handleClick}) => {
                   </svg>
 
                   <div>
-                    <h3 className="text-black text-sm">
+                    <h3 className="text-gray-700 text-sm">
                       {location?.structured_formatting?.main_text}
                     </h3>
 

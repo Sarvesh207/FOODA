@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {BsCartDash } from "react-icons/bs";
 
 const IsEmpty = () => {
   return (

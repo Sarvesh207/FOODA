@@ -1,5 +1,4 @@
 import React from "react";
-
 import { useSelector } from "react-redux";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Cart from "../src/pages/Cart.jsx";

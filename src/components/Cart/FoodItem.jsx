@@ -1,15 +1,15 @@
 import React from "react";
-import { IMG_CDN_URL } from "../../constant.js";
 import { useDispatch, useSelector } from "react-redux";
 import FormatPrice from "../../Helper/FormatPrice.js";
+import { IMG_CDN_URL } from "../../constant.js";
 
+import { Link } from "react-router-dom";
 import {
   clearCart,
-  removeItem,
-  incrementQuantity,
   decrementQuantity,
+  incrementQuantity,
+  removeItem,
 } from "../../utils/cartSlice.js";
-import { Link } from "react-router-dom";
 
 const FoodItem = () => {
   const cartItems = useSelector((store) => store.cart.items);
