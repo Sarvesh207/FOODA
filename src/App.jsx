@@ -3,7 +3,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Cart from "../src/pages/Cart.jsx";
-import Footer from "./components/Footer/Footer.jsx";
+import Footer from "./components/Footer.jsx";
 import Header from "./components/Header.jsx";
 import Contact from "./pages/Contact.jsx";
 import Home from "./pages/Home.jsx";
