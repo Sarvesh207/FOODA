@@ -37,8 +37,9 @@ const Home = () => {
     return restaurant.length === 0 ? (
         <Shimmer />
     ) : (
-        <>
+        <>  <div className="mt-[100px]">
             <FilterNavbar />
+            </div>
             <hr className="mx-40" />
             <SideCard/>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 lg:gap-3 justify-items-center  lg:px-20 md:px10  px-15 ">
@@ -46,7 +47,7 @@ const Home = () => {
                     restrauntsList.map((restaurant) => {
                         return (
                             <Link
-                                to={"/restaurant/" + restaurant.info.id}
+                                to={`/restaurant/${restaurant.info.id}`}
                                 key={restaurant.info.id}
                             >
                                 <RestruantCard {...restaurant.info} />

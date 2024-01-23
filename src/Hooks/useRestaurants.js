@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 const useRestaurants = () => {
     const [restaurants, setRestarunts] = useState(null);
     const [banner, setBanner] = useState(null);
+
+    const userLocation = useSelector((store) => store.location.userLocation)
+    console.log(location)
 
     useEffect(() => {
         getRestaurants();
@@ -9,8 +13,9 @@ const useRestaurants = () => {
 
     async function getRestaurants() {
         try {
+            const {lat, lng} = userLocation;
             const response = await fetch(
-                "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&sortBy=RELEVANCE&page_type=DESKTOP_WEB_LISTING"
+                `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat}&lng=${lng}&sortBy=RELEVANCE&page_type=DESKTOP_WEB_LISTING`
             );
 
             if (!response.ok) {

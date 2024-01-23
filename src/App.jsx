@@ -9,6 +9,8 @@ import Home from "./pages/Home.jsx";
 import LandingPage from "./pages/LandingPage.jsx";
 import Search from "./pages/Search.jsx";
 import Error from "./pages/Error.jsx";
+import RestaurantMenu from './components/Home/RestaurantMenu/RestaurantMenu.jsx'
+import MenuCards from "./components/Home/RestaurantMenu/MenuCards/MenuCards.jsx";
 
 const App = () => {
   const userLocation = useSelector((store) => store.location.userLocation)
@@ -19,12 +21,13 @@ const App = () => {
         <Routes>
         {userLocation ? <>
             <Route path="/" element={<Home />} />
+            <Route path="/restaurant/:id" element={<RestaurantMenu />} />
             <Route path="/search" element={<Search />} />
             <Route path="/help" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/signin" element={<Error />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="*" element={<Error />} />
+            {/* <Route path="*" element={<Error />} /> */}
             
           </> : <Route path="/" element={<LandingPage />} />
         }
