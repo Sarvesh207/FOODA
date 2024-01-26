@@ -1,12 +1,12 @@
 import React from "react";
 
 
-const Carousal = ({ image }) => {
+const Carousal = ({ imageId }) => {
   return (
     <div className="  w-60">
       <img
         className=" "
-        src={image}
+        src={`https://media-assets.swiggy.com/swiggy/image/upload/${imageId}`}
         alt="Img"
       />
     </div>

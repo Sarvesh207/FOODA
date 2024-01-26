@@ -4,39 +4,41 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Cart from "../src/pages/Cart.jsx";
 import Footer from "./components/Footer.jsx";
 import Header from "./components/Header.jsx";
+import RestaurantMenu from "./components/Home/RestaurantMenu/RestaurantMenu.jsx";
 import Contact from "./pages/Contact.jsx";
+import Error from "./pages/Error.jsx";
 import Home from "./pages/Home.jsx";
 import LandingPage from "./pages/LandingPage.jsx";
 import Search from "./pages/Search.jsx";
-import Error from "./pages/Error.jsx";
-import RestaurantMenu from './components/Home/RestaurantMenu/RestaurantMenu.jsx'
-import MenuCards from "./components/Home/RestaurantMenu/MenuCards/MenuCards.jsx";
+import "./CSS/index.css";
 
 const App = () => {
-  const userLocation = useSelector((store) => store.location.userLocation)
-  return (
-    <Router>
-     
-       {userLocation && <Header/>}
-        <Routes>
-        {userLocation ? <>
-            <Route path="/" element={<Home />} />
-            <Route path="/restaurant/:id" element={<RestaurantMenu />} />
-            <Route path="/search" element={<Search />} />
-            <Route path="/help" element={<Home />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/signin" element={<Error />} />
-            <Route path="/cart" element={<Cart />} />
-            {/* <Route path="*" element={<Error />} /> */}
-            
-          </> : <Route path="/" element={<LandingPage />} />
-        }
-        </Routes>
-        <Footer/>
-        
-      
-    </Router>
-  );
+    const userLocation = useSelector((store) => store.location.userLocation);
+    return (
+        <Router>
+            {userLocation && <Header />}
+            <Routes>
+                {userLocation ? (
+                    <>
+                        <Route path="/" element={<Home />} />
+                        <Route
+                            path="/restaurant/:id"
+                            element={<RestaurantMenu />}
+                        />
+                        <Route path="/search" element={<Search />} />
+                        <Route path="/help" element={<Home />} />
+                        <Route path="/contact" element={<Contact />} />
+                        <Route path="/signin" element={<Error />} />
+                        <Route path="/cart" element={<Cart />} />
+                        {/* <Route path="*" element={<Error />} /> */}
+                    </>
+                ) : (
+                    <Route path="/" element={<LandingPage />} />
+                )}
+            </Routes>
+            <Footer />
+        </Router>
+    );
 };
 
 export default App;

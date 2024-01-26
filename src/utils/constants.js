@@ -23,3 +23,4 @@ export const MENU_IMG = "https://media-assets.swiggy.com/swiggy/image/upload/fl_
 
 export const CATEGORY_IMG = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/";
 
+export const CORS_FOR_GROCERY = "https://thingproxy.freeboard.io";
