@@ -12,6 +12,8 @@ import LandingPage from "./pages/LandingPage.jsx";
 import Search from "./pages/Search.jsx";
 import "./CSS/index.css";
 import SideCard from "./components/Cart/SideCard.jsx";
+import UnderCondtruction from "./components/UnderCondtruction.jsx";
+import Shimmer from "./components/Shimmer.jsx";
 
 const App = () => {
     const userLocation = useSelector((store) => store.location.userLocation);
@@ -28,11 +30,12 @@ const App = () => {
                             element={<RestaurantMenu />}
                         />
                         <Route path="/search" element={<Search />} />
-                        <Route path="/help" element={<Error />} />
-                        <Route path="/contact" element={<Contact />} />
-                        <Route path="/signin" element={<Error />} />
+                        <Route path="/help" element={<UnderCondtruction />} />
+                        <Route path="/offer" element={<UnderCondtruction />} />
+                        <Route path="/contact" element={<UnderCondtruction />} />
+                        <Route path="/signin" element={<UnderCondtruction />} />
                         <Route path="/cart" element={<Cart />} />
-                        {/* <Route path="*" element={<Error />} /> */}
+                        <Route path="*" element={<Shimmer />} />
                     </>
                 ) : (
                     <Route path="/" element={<LandingPage />} />

@@ -1,11 +1,15 @@
-import React from 'react'
+import React from "react";
 
-const ImageCard = ({image}) => {
-  return (
-    <div>
-        <img className='w-28' src={image} alt="" />
-    </div>
-  )
-}
+const ImageCard = ({ imgId }) => {
+    return (
+        <div className="w-32">
+            <img
+                className="w-full"
+                src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/${imgId}`}
+                alt=""
+            />
+        </div>
+    );
+};
 
-export default ImageCard
+export default ImageCard;

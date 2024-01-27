@@ -1,32 +1,22 @@
-import React from "react";
+import React, { useRef } from "react";
 import "react-multi-carousel/lib/styles.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import useRestaurants from "../Hooks/useRestaurants.js";
-import SideCard from "../components/Cart/SideCard.jsx";
+import Carousal from "../components/Carousal.jsx";
 import FilterNavbar from "../components/FilterNavbar.jsx";
 import RestruantCard from "../components/RestaurantCard.jsx";
 import Shimmer from "../components/Shimmer.jsx";
 import { setRestarunts } from "../utils/filterSlice.js";
 import useOnline from "../utils/useOnline.js";
-import Carousal from "../components/Carousal.jsx";
-import { useRef } from "react";
-import { BiChevronRight, BiChevronLeft } from "react-icons/bi";
-
 import "../CSS/index.css";
+
 
 const Home = () => {
     const [restaurant, banner] = useRestaurants();
-    console.log(banner);
+    
 
-    const sliderRef = useRef();
-    const scrollHandler = (scrollOffset) => {
-        const newScrollLeft = sliderRef.current.scrollLeft + scrollOffset;
-        sliderRef.current.scrollTo({
-            left: newScrollLeft,
-            behavior: "smooth",
-        });
-    };
+    
     const dispatch = useDispatch();
     dispatch(setRestarunts(restaurant));
     const restrauntsList = useSelector((store) => store.filter.restraunts);
@@ -41,17 +31,17 @@ const Home = () => {
         );
     }
 
-    if (!restaurant) return null;
+    if (!restaurant) return <Shimmer/>;
 
-    return restaurant.length === 0 ? (
+    return restaurant.length === 0  ? (
         <Shimmer />
     ) : (
         <>
-            {" "}
+
             <div className="mt-[100px]">
                 <div
                     className="mx-auto lg:px-14 lg:my-10 md:px-16 my-3 md:my-5 w-full pt-3"
-                    ref={sliderRef}
+                    
                 >
                     <div className="conatainer w-full lg:pb-2 md:pb-2 pb-2 pt-2">
                         {banner && (
