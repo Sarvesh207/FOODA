@@ -178,7 +178,7 @@ const Header = () => {
                                     fill="#fff"
                                 />
                             </svg>
-                            <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  ">
+                            <span className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2  ">
                                 {cartItems.length}
                             </span>
                         </div>

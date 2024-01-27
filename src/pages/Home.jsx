@@ -11,7 +11,9 @@ import { setRestarunts } from "../utils/filterSlice.js";
 import useOnline from "../utils/useOnline.js";
 import Carousal from "../components/Carousal.jsx";
 import { useRef } from "react";
-import '../CSS/index.css'
+import { BiChevronRight, BiChevronLeft } from "react-icons/bi";
+
+import "../CSS/index.css";
 
 const Home = () => {
     const [restaurant, banner] = useRestaurants();
@@ -51,25 +53,33 @@ const Home = () => {
                     className="mx-auto lg:px-14 lg:my-10 md:px-16 my-3 md:my-5 w-full pt-3"
                     ref={sliderRef}
                 >
-                    <div className="w-full lg:pb-2 md:pb-2 pb-2 pt-2">
+                    <div className="conatainer w-full lg:pb-2 md:pb-2 pb-2 pt-2">
                         {banner && (
                             <span
-                                className="w-full text-left lg:pb-6  md:pb-6  mt-4 font-black lg:text-2xl md:text-2xl text-xl tracking-tight"
+                                className="w-full text-left lg:pb-6 font-bold  md:pb-6  mt-4 text-gray-600 g:text-2xl md:text-2xl text-xl tracking-tight"
                                 style={{ wordSpacing: 3 }}
                             >
                                 What's on your mind?
                             </span>
                         )}
                     </div>
+                    <div className="conatainer cursor-pointer">
+                        <div className="sliderWrapper flex items-center  ">
+                           
 
-                    <div className=" flex md:pt-3 pt-2">
-                        {banner.map((image) => (
-                            <Carousal
-                                imageId={image?.imageId}
-                                key={image.imageId}
-                            />
-                        ))}
+                            <div className="imageList flex gap-10 md:pt-3 pt-2">
+                                {banner.map((image) => (
+                                    <Carousal
+                                        imageId={image?.imageId}
+                                        key={image.imageId}
+                                    />
+                                ))}
+                            </div>
+                            
+                        </div>
                     </div>
+
+                    <hr className="max-w-[1200px] mx-auto text-gray-300"/>
                 </div>
 
                 <FilterNavbar />
