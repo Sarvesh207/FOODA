@@ -85,7 +85,7 @@ const Home = () => {
                 <FilterNavbar />
             </div>
             <hr className="mx-40" />
-            <SideCard />
+            
             <div className="grid md:grid-cols-2 lg:grid-cols-3 lg:gap-3 justify-items-center  lg:px-20 md:px10  px-15 ">
                 {restrauntsList &&
                     restrauntsList.map((restaurant) => {

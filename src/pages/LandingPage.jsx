@@ -1,12 +1,7 @@
-import React from 'react'
-import { useEffect, useRef, useState } from "react"
-import useSearchLocation from "../Hooks/useSearchLocation";
-import { ADDRESS_API} from "../utils/constants";
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch } from "react-redux";
-import { getLocation } from "../utils/locationSlice";
-import { CiLocationOn } from "react-icons/ci";
-import { COMPANY_LOGO } from '../constant';
-import { LANDING_PAGE_IMAGE } from '../constant';
+import useSearchLocation from "../Hooks/useSearchLocation";
+import { COMPANY_LOGO, LANDING_PAGE_IMAGE } from '../constant';
 
 const LandingPage = () => {
     const SearchText = useRef(null);

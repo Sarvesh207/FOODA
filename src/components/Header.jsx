@@ -9,18 +9,22 @@ import { COMPANY_LOGO } from "../constant";
 import { IoIosArrowDown } from "react-icons/io";
 import { useDispatch } from "react-redux";
 import { toggleLocation } from "../utils/toggleLocationSlice";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
     const [isSideMenu, setIsSideMenu] = useState(false);
     const cartItems = useSelector((store) => store.cart.items);
     const address = useSelector((store) => store.location.userLocation.address);
     const dispatch = useDispatch();
-    
+
+    const location = useLocation();
+    console.log(location.pathname);
+
     const handleClick = () => {
-        dispatch(toggleLocation())
-        console.log("I am working")
-    }
-    
+        dispatch(toggleLocation());
+        console.log("I am working");
+    };
+
     const navLinks = [
         {
             label: "Search",
@@ -106,17 +110,25 @@ const Header = () => {
                             />
                         </Link>
                     </section>
-                    <button className="hover:mouse-pointer" onClick={handleClick}>
-                        <p className="flex gap-2 items-center">
-                            <span className="font-bold text-sm text-gray-600 underline decoration-2 underline-offset-4 mb-2 hover:text-[#fc8019]">
-                                Other
-                            </span>{" "}
-                            <span className=" text-gray-600 hover:text-[#93959f] text-xs">
-                                {address}
-                            </span>
-                            <span className="text-gray-500 hover:text-[#fc8019]"> <IoIosArrowDown/> </span>
-                        </p>
-                    </button>
+                    {   location.pathname !== "/help"  && location.pathname !== "/cart" && location.pathname !== "/signin"
+                        && (<button
+                            className="hover:mouse-pointer"
+                            onClick={handleClick}
+                        >
+                            <p className="flex gap-2 items-center">
+                                <span className="font-bold text-sm text-gray-600 underline decoration-2 underline-offset-4 mb-2 hover:text-[#fc8019]">
+                                    Other
+                                </span>{" "}
+                                <span className=" text-gray-600 hover:text-[#93959f] text-xs">
+                                    {address}
+                                </span>
+                                <span className="text-gray-500 hover:text-[#fc8019]">
+                                    {" "}
+                                    <IoIosArrowDown />{" "}
+                                </span>
+                            </p>
+                        </button> )
+                    }
                     {/* Navlinks for large screen */}
                     <div className=" flex items-center gap-6 ">
                         {navLinks.map((navItem) => (
