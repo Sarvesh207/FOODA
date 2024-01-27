@@ -8,8 +8,10 @@ export const FETCH_RESTAURANT_URL =
 export const COMPANY_LOGO =
     "https://www.fooda.com/themes/custom/fooda/images/logo.png";
 
+// export const LANDING_PAGE_IMAGE =
+//     "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_1340/Lunch1_vlksgq";
 export const LANDING_PAGE_IMAGE =
-    "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_1340/Lunch1_vlksgq";
+    "https://res.cloudinary.com/dliuckrho/image/upload/v1706337567/landingPageImage_tjdo5r.png";
 
 export const imagesList = [
     "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/rng/md/carousel/production/b4ff78ecc5b8b66f732dd06228916d65",

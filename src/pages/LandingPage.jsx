@@ -66,10 +66,10 @@ const LandingPage = () => {
     }, [])
 
     return (
-            <div className="flex lg:flex-row flex-col h-screen bg-[#ffff]">
-                <div className="w-full lg:w-1/2 px-3 sm:px-16 2xl:px-28 py-32 relative">
-                    <img src={LANDING_PAGE_IMAGE} alt="img" className="absolute w-full top-0 lg:ml-[755px] left-0 h-full object-cover" />
-                    <div className="2xl:w-4/5 relative">
+            <div className="flex sm:flex-col md:flex-row lg:flex-row lg:items-center flex-col h-screen bg-[#ffff]">
+                <div className=" md:max-w-[600px]  lg:px-5 lg:w-[600px] 2xl:px-10 py-32 relative">
+                    
+                    <div className="2xl:w-4/5 ">
                         <div className="flex items-center gap-3 text-white lg:text-black text-shadow">
                             <img src={COMPANY_LOGO} alt="img" className="h-[60px] rounded-full border border-black" />
                            
@@ -122,7 +122,7 @@ const LandingPage = () => {
                             </ul>
                         </div>
                         <div className="text-shadow">
-                            <p className="font-ProximaNovaThin text-[15px] text-white lg:text-[#a9abb2] mt-7 mb-2 uppercase">Popular Cities in India</p>
+                            <p className="font-ProximaNovaThin text-[15px] text-white lg:text-gray-600 font-bold mt-7 mb-2">Find your location to sign up for daily menus, rewards, and mobile ordering.</p>
                             <div className="lg:text-[#686b78] text-white text-base font-ProximaNovaSemiBold flex flex-wrap">
                                 <span className="mr-2">Ahmedabad</span>
                                 <span className="mr-2 lg:text-[#93959f]">Bangalore</span>
@@ -138,7 +138,9 @@ const LandingPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="landingpagebg lg:w-1/2 hidden lg:block"></div>
+                <div className='lg:max-w-[900px] md:max-w-[600px]'> 
+                    <img src={LANDING_PAGE_IMAGE} className='w-full' alt="" />
+                </div>
             </div>
     )
 }
