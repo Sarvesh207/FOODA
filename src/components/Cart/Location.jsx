@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import {getLocation} from '../../utils/locationSlice'
+import { getLocation } from "../../utils/locationSlice";
 import { useDispatch } from "react-redux";
+import { RiFocus3Line } from "react-icons/ri";
 
 const Location = () => {
     const [query, setQuery] = useState("");
@@ -25,42 +26,37 @@ const Location = () => {
         };
     }, [query]);
 
-    const handleLocationChange = () => {
-        
-    }
+    const handleLocationChange = () => {};
 
-
-    
     const fetchAddress = async (place_id) => {
         try {
-            const res = await fetch(`https://www.swiggy.com/dapi/misc/address-recommend?place_id=${place_id}`);
+            const res = await fetch(
+                `https://www.swiggy.com/dapi/misc/address-recommend?place_id=${place_id}`
+            );
             if (!res.ok) {
                 const error = res.status;
                 throw new Error(error);
-            }
-            else {
+            } else {
                 const { data } = await res.json();
-
-
 
                 dispatch(
                     getLocation({
-                        city : data[0]?.address_components[0]?.short_name,
+                        city: data[0]?.address_components[0]?.short_name,
                         lat: data[0]?.geometry?.location?.lat,
                         lng: data[0]?.geometry?.location?.lng,
-                        address: data[0]?.formatted_address
+                        address: data[0]?.formatted_address,
                     })
-                )
+                );
                 window.location.reload();
             }
         } catch (err) {
-            console.log(err)
+            console.log(err);
         }
-    }
+    };
 
     return (
         <div>
-            <div className=" border-2 rounded-md px-4 py-2 shadow-lg">
+            <div className=" border-2 rounded-sm px-4 py-2 ">
                 <input
                     className="w-60 outline-none px-2"
                     type="text"
@@ -68,6 +64,23 @@ const Location = () => {
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                 />
+            </div>
+
+            <div className="border-2  h-50 rounded-sm  px-4 py-2  mt-5">
+                <button>
+                    <div className="flex items-center gap-3">
+                        {" "}
+                        <span className="text-xl text-gray-400">
+                            <RiFocus3Line />
+                        </span>{" "}
+                        <p className="hover:text-[#fc8019]">
+                            Get Current Location
+                        </p>
+                    </div>
+                    <p className="text-sm text-gray-500 text-left ml-8 font-thin ">
+                        using GPS
+                    </p>
+                </button>
             </div>
 
             <div>
@@ -78,7 +91,9 @@ const Location = () => {
                                 <li
                                     className="mt-5 pb-4 cursor-pointer border-dotted border-b-2  flex hover:bg-slate-200 rounded-md px-3 py-2"
                                     key={location?.place_id}
-                                    onClick={() => fetchAddress(location?.place_id)}
+                                    onClick={() =>
+                                        fetchAddress(location?.place_id)
+                                    }
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"

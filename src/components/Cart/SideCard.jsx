@@ -1,15 +1,14 @@
-import React, { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import Location from "./Location";
-import { useSelector, useDispatch } from "react-redux";
+import React, { Fragment } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleLocation } from "../../utils/toggleLocationSlice";
+import Location from "./Location";
 
 export default function SideCard() {
     const isOpen = useSelector((store) => store.toggleLocation.isOpen);
     const dispatch = useDispatch();
-    console.log(isOpen);
-    // const [open, setOpen] = useState(false)
+
     const handleClick = () => {
         dispatch(toggleLocation());
     };
