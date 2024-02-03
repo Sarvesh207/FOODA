@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import useSearchLocation from "../Hooks/useSearchLocation";
 import { COMPANY_LOGO, LANDING_PAGE_IMAGE } from "../constant";
-import {getLocation} from "../utils/locationSlice";
+import { getLocation } from "../utils/locationSlice";
+import { CORSPROXY } from "../utils/constants";
 
 const LandingPage = () => {
     const SearchText = useRef(null);
@@ -11,21 +12,23 @@ const LandingPage = () => {
     const dispatch = useDispatch();
 
     const handleSearch = (searchQuery) => {
-        
         useSearchLocation(searchQuery, setSearchData);
     };
 
     const fetchAddress = async (place_id) => {
         try {
-            const res = await fetch(
-                `https://www.swiggy.com/dapi/misc/address-recommend?place_id=${place_id}`
-            );
+            const url =
+                CORSPROXY +
+                encodeURIComponent(
+                    `https://www.swiggy.com/dapi/misc/address-recommend?place_id=${place_id}`
+                );
+            const res = await fetch(url);
             if (!res.ok) {
                 const error = res.status;
                 throw new Error(error);
             } else {
                 const { data } = await res.json();
-                
+
                 dispatch(
                     getLocation({
                         city: data[0]?.address_components[0]?.short_name,

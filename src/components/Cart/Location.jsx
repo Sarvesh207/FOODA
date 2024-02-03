@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getLocation } from "../../utils/locationSlice";
 import { useDispatch } from "react-redux";
 import { RiFocus3Line } from "react-icons/ri";
+import { CORSPROXY } from "../../utils/constants";
 
 const Location = () => {
     const [query, setQuery] = useState("");
@@ -9,8 +10,10 @@ const Location = () => {
     const dispatch = useDispatch();
 
     const getLocationsSuggestions = async () => {
+        const url = CORSPROXY+encodeURIComponent(`https://www.swiggy.com/dapi/misc/place-autocomplete?input=${query}&types=`)
         const res = await fetch(
-            `https://www.swiggy.com/dapi/misc/place-autocomplete?input=${query}&types=`
+
+            url
         );
         const data = await res.json();
 
@@ -30,8 +33,9 @@ const Location = () => {
 
     const fetchAddress = async (place_id) => {
         try {
+            const url = CORSPROXY+encodeURIComponent( `https://www.swiggy.com/dapi/misc/address-recommend?place_id=${place_id}`)
             const res = await fetch(
-                `https://www.swiggy.com/dapi/misc/address-recommend?place_id=${place_id}`
+               url
             );
             if (!res.ok) {
                 const error = res.status;

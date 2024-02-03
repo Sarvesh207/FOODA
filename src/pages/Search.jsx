@@ -3,14 +3,16 @@ import { BiSearch } from "react-icons/bi";
 import MyCarousel from '../components/Search/MyCarousel'
 import { Link, Outlet } from "react-router-dom";
 import Suggestions from "../components/Search/Suggestions";
+import { CORSPROXY } from "../utils/constants";
 
 const Search = () => {
     const [query, setQuery] = useState("");
     const [suggestionList, setSuggetionList] = useState([]);
 
     const getSuggestions = async () => {
+        const url = CORSPROXY+encodeURIComponent(`https://www.swiggy.com/dapi/restaurants/search/suggest?lat=12.9715987&lng=77.5945627&str=${query}&trackingId=undefined`)
         const data = await fetch(
-            `https://www.swiggy.com/dapi/restaurants/search/suggest?lat=12.9715987&lng=77.5945627&str=${query}&trackingId=undefined`
+            url
         );
         const json = await data.json();
         console.log(json?.data?.suggestions);

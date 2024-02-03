@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { CORSPROXY } from "../../utils/constants";
 
 const SearchedItem = () => {
     const [searchedItem, setSearchedItem] = useState([]);
     const getSearchedItems = async () => {
-        const data = await fetch(
-            `https://www.swiggy.com/dapi/restaurants/search/v3?lat=12.9715987&lng=77.5945627&str=Pizza&trackingId=null&submitAction=SUGGESTION&queryUniqueId=7e4454a0-c763-4cef-7e4f-fd7b71e2a368&metaData=%7B%22type%22%3A%22DISH%22%2C%22data%22%3A%7B%22vegIdentifier%22%3A%22VEG%22%2C%22cloudinaryId%22%3A%22sbt21spuw3am55e4vwny%22%2C%22dishFamilyId%22%3A%22846682%22%2C%22dishFamilyIds%22%3A%5B%22846682%22%5D%7D%2C%22businessCategory%22%3A%22SWIGGY_FOOD%22%2C%22displayLabel%22%3A%22Dish%22%7D`
-        );
+        const url =
+            CORSPROXY +
+            encodeURIComponent(
+                `https://www.swiggy.com/dapi/restaurants/search/v3?lat=12.9715987&lng=77.5945627&str=Pizza&trackingId=null&submitAction=SUGGESTION&queryUniqueId=7e4454a0-c763-4cef-7e4f-fd7b71e2a368&metaData=%7B%22type%22%3A%22DISH%22%2C%22data%22%3A%7B%22vegIdentifier%22%3A%22VEG%22%2C%22cloudinaryId%22%3A%22sbt21spuw3am55e4vwny%22%2C%22dishFamilyId%22%3A%22846682%22%2C%22dishFamilyIds%22%3A%5B%22846682%22%5D%7D%2C%22businessCategory%22%3A%22SWIGGY_FOOD%22%2C%22displayLabel%22%3A%22Dish%22%7D`
+            );
+        const data = await fetch(url);
         const json = data.json();
     };
     useEffect(() => {

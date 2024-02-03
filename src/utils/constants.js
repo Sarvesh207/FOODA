@@ -1,4 +1,4 @@
-export const CORSPROXY = "https://erin-glamorous-earthworm.cyclic.app/api/proxy/swiggy/dapi/";
+
 
 // export const LOCATION_API = `${CORSPROXY}misc/place-autocomplete?input=`;
 export const LOCATION_API = `https://swiggy.com/dapi/misc/place-autocomplete?input=`;
@@ -24,3 +24,5 @@ export const MENU_IMG = "https://media-assets.swiggy.com/swiggy/image/upload/fl_
 export const CATEGORY_IMG = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/";
 
 export const CORS_FOR_GROCERY = "https://thingproxy.freeboard.io";
+
+export const CORSPROXY = "https://corsproxy.org/?";
