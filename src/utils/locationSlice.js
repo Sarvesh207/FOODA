@@ -7,12 +7,13 @@ const locationSlice = createSlice({
     },
     reducers: {
         getLocation: (state, action) => {
-
             const existingLocation = localStorage.getItem("UserLocation");
 
             if (existingLocation) {
-                // If exists, remove it from local storage
-                localStorage.removeItem("UserLocation");
+                // Only remove if the existing location is different from the new one
+                if (existingLocation !== JSON.stringify(action.payload)) {
+                    localStorage.removeItem("UserLocation");
+                }
             }
 
             state.userLocation = action.payload;
