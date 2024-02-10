@@ -1,23 +1,26 @@
-import ImageCard from "./ImageCard";
 import React, { useEffect, useState } from "react";
-import { ThreeDots } from 'react-loader-spinner'
+import { ThreeDots } from "react-loader-spinner";
 import { CORSPROXY } from "../../utils/constants";
+import ImageCard from "./ImageCard";
 
 const MyCarousel = () => {
     const [imageList, setImageList] = useState(null);
 
+    
+
     const getImageList = async () => {
         try {
-            const url = CORSPROXY+"https://www.swiggy.com/dapi/landing/PRE_SEARCH?lat=12.9715987&lng=77.5945627"
-            const res = await fetch(
-                url
-            );
+            const url =
+                CORSPROXY +
+                encodeURIComponent(
+                    `https://www.swiggy.com/dapi/landing/PRE_SEARCH?lat=12.9715987&lng=77.5945627`
+                );
+            const res = await fetch(url);
 
             const data = await res.json();
-            
+
             const list = data?.data?.cards[1]?.card?.card?.imageGridCards?.info;
             setImageList(list);
-            console.log(data?.data?.cards[1]?.card?.card?.imageGridCards?.info);
         } catch (error) {
             console.log(error);
         }
