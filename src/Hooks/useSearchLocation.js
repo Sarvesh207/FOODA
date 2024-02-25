@@ -14,7 +14,7 @@ const useSearchLocation = async (searchQuery, setSearchData) => {
                 throw new Error(error);
             } else {
                 const json = await res.json();
-                console.log(json.data);
+                
                 setSearchData(json?.data);
             }
         } else if (searchQuery === "") {

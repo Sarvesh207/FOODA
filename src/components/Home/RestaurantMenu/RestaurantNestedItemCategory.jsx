@@ -3,7 +3,7 @@ import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import RestaurantItemCategory from "./RestaurantItemCategory";
 
 const RestaurantNestedItemCategory = ({ nestedItemCategory }) => {
-  console.log(nestedItemCategory.categories.title, "hii i am working");
+  
   const [isVisible, setIsVisible] = useState(true);
 
   const toggleView = () => {

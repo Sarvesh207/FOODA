@@ -10,7 +10,7 @@ import Shimmer from "../../../Shimmer.jsx";
 const MenuCards = () => {
   const params = useParams();
   const id = params.id;
-  console.log(id);
+  
   const restaurantsMenu = useRestaurantMenu(id) ?? [];
 
   const dispatch = useDispatch();

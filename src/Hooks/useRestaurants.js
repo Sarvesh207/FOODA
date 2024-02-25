@@ -6,7 +6,7 @@ const useRestaurants = () => {
     const [banner, setBanner] = useState(null);
 
     const userLocation = useSelector((store) => store.location.userLocation);
-    console.log(location);
+   
 
     useEffect(() => {
         getRestaurants();
@@ -28,10 +28,7 @@ const useRestaurants = () => {
                 );
             }
             const jsonData = await response.json();
-            console.log(
-                jsonData?.data?.cards[0]?.card?.card?.gridElements
-                    ?.infoWithStyle?.info
-            );
+            
             const checkJsonData = async (jsonData) => {
                 const restaurantsData = jsonData.data.cards.find(
                     (card) =>

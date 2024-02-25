@@ -18,11 +18,11 @@ const Header = () => {
     const dispatch = useDispatch();
 
     const location = useLocation();
-    console.log(location.pathname);
+    
 
     const handleClick = () => {
         dispatch(toggleLocation());
-        console.log("I am working");
+        
     };
 
     const navLinks = [
@@ -32,7 +32,7 @@ const Header = () => {
             icons: IoSearch,
             svg: (
                 <svg
-                    class="_1GTCc"
+                    className="_1GTCc"
                     viewBox="5 -1 12 25"
                     height="17"
                     width="17"
@@ -48,7 +48,7 @@ const Header = () => {
             icons: BiSolidOffer,
             svg: (
                 <svg
-                    class="_1GTCc"
+                    className="_1GTCc"
                     viewBox="0 0 32 32"
                     height="19"
                     width="19"
@@ -64,7 +64,7 @@ const Header = () => {
             icons: IoIosHelpCircleOutline,
             svg: (
                 <svg
-                    class="_1GTCc"
+                    className="_1GTCc"
                     viewBox="6 -1 12 25"
                     height="19"
                     width="19"
@@ -80,7 +80,7 @@ const Header = () => {
             icons: IoIosHelpCircleOutline,
             svg: (
                 <svg
-                    class="_1GTCc"
+                    className="_1GTCc"
                     viewBox="6 0 12 24"
                     height="19"
                     width="18"

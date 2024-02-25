@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import "react-multi-carousel/lib/styles.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -11,14 +11,15 @@ import { setRestarunts } from "../utils/filterSlice.js";
 import useOnline from "../utils/useOnline.js";
 import "../CSS/index.css";
 
-
 const Home = () => {
     const [restaurant, banner] = useRestaurants();
-    
 
-    
     const dispatch = useDispatch();
-    dispatch(setRestarunts(restaurant));
+    useEffect(() => {
+        if (restaurant) {
+            dispatch(setRestarunts(restaurant));
+        }
+    }, [restaurant]);
     const restrauntsList = useSelector((store) => store.filter.restraunts);
 
     const isOnline = useOnline();
@@ -31,18 +32,14 @@ const Home = () => {
         );
     }
 
-    if (!restaurant) return <Shimmer/>;
+    if (!restaurant) return <Shimmer />;
 
-    return restaurant.length === 0  ? (
+    return restaurant.length === 0 ? (
         <Shimmer />
     ) : (
         <>
-
             <div className="mt-[100px]">
-                <div
-                    className="mx-auto lg:px-14 lg:my-10 md:px-16 my-3 md:my-5 w-full pt-3"
-                    
-                >
+                <div className="mx-auto lg:px-14 lg:my-10 md:px-16 my-3 md:my-5 w-full pt-3">
                     <div className="conatainer w-full lg:pb-2 md:pb-2 pb-2 pt-2">
                         {banner && (
                             <span
@@ -55,8 +52,6 @@ const Home = () => {
                     </div>
                     <div className="conatainer cursor-pointer">
                         <div className="sliderWrapper flex items-center  ">
-                           
-
                             <div className="imageList flex gap-10 md:pt-3 pt-2">
                                 {banner.map((image) => (
                                     <Carousal
@@ -65,17 +60,16 @@ const Home = () => {
                                     />
                                 ))}
                             </div>
-                            
                         </div>
                     </div>
 
-                    <hr className="max-w-[1200px] mx-auto text-gray-300"/>
+                    <hr className="max-w-[1200px] mx-auto text-gray-300" />
                 </div>
 
                 <FilterNavbar />
             </div>
             <hr className="mx-40" />
-            
+
             <div className="grid md:grid-cols-2 lg:grid-cols-3 lg:gap-3 justify-items-center  lg:px-20 md:px10  px-15 ">
                 {restrauntsList &&
                     restrauntsList.map((restaurant) => {

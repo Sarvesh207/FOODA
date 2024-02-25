@@ -3,12 +3,13 @@ import FormatPrice from "../../../Helper/FormatPrice.js";
 import { TbBike } from "react-icons/tb";
 
 const RestauranrInfo = (restaurant) => {
+  
     
   return (
     <div className="px-3">
         <h2 className="text-sky-950 font-bold text-2xl">{restaurant.name}</h2>
 
-        <p className="mt-5 text-gray-600">{restaurant.cuisines.join(", ")}</p>
+        {/* <p className="mt-5 text-gray-600">{restaurant.cuisines.join(", ")}</p> */}
 
         <p className=" text-gray-600"> {restaurant.areaName}</p>
         <div className="flex justify-start items-center gap-x-2 text-gray-600 mt-2">
