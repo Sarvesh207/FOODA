@@ -20,17 +20,17 @@ const useRestaurant = (id) => {
             const json = await data.json();
            
          
-            const restaurantInfo = json?.data.cards[2].card.card.info
+            const restaurantInfo = json?.data.cards[0].card.card.info
             
             const menuList =
-                json?.data?.cards[4]["groupedCard"]?.cardGroupMap?.REGULAR
+                json?.data?.cards[2]["groupedCard"]?.cardGroupMap?.REGULAR
                     ?.cards;
            
             const modifiedData = {
                 restaurantDetails: restaurantInfo,
                 menu: menuList,
             };
-            console.log(modifiedData)
+            
 
             
     

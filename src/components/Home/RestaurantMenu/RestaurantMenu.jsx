@@ -1,17 +1,13 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
-import Shimmer from "../../Shimmer.jsx";
-import useRestaurant from "../../../utils/useRestaurant.js";
-import useRestaurantMenu from "../../../utils/useRestaurantMenu.js";
-import { addItem } from "../../../utils/cartSlice.js";
+import { ThreeDots } from "react-loader-spinner";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { ThreeDots } from "react-loader-spinner";
+import { addItem } from "../../../utils/cartSlice.js";
+import useRestaurant from "../../../utils/useRestaurant.js";
 
-import { IMG_CDN_URL } from "../../../constant.js";
 
-import FormatPrice from "../../../Helper/FormatPrice.js";
 import RestauranrInfo from "./RestauranrInfo.jsx";
 import RestaurantMenuList from "./RestaurantMenuList.jsx";
 
