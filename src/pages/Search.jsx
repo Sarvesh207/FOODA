@@ -7,67 +7,64 @@ import { CORSPROXY } from "../utils/constants";
 import { useSelector } from "react-redux";
 
 const Search = () => {
-    const [query, setQuery] = useState("");
-    const [suggestionList, setSuggetionList] = useState([]);
-    const { lat, lng } = useSelector((store) => store.location.userLocation);
+  const [query, setQuery] = useState("");
+  const [suggestionList, setSuggetionList] = useState([]);
+  const { lat, lng } = useSelector((store) => store.location.userLocation);
 
-    const getSuggestions = async () => {
-        const url =
-            CORSPROXY +
-            encodeURIComponent(
-                `https://www.swiggy.com/dapi/restaurants/search/suggest?lat=${lat}&lng=${lng}&str=${query}&trackingId=undefined`
-            );
-        const data = await fetch(url);
-        const json = await data.json();
-        
-        setSuggetionList(json?.data?.suggestions);
+  const getSuggestions = async () => {
+    const url = `https://www.swiggy.com/dapi/restaurants/search/suggest?lat=${lat}&lng=${lng}&str=${query}&trackingId=undefined`;
+
+    const data = await fetch(url);
+    const json = await data.json();
+
+    setSuggetionList(json?.data?.suggestions);
+  };
+  useEffect(() => {
+    let timer = setTimeout(() => {
+      getSuggestions();
+    }, 300);
+
+    return () => {
+      clearTimeout(timer);
     };
-    useEffect(() => {
-        let timer = setTimeout(() => {
-            getSuggestions();
-        }, 300);
+  }, [query]);
 
-        return () => {
-            clearTimeout(timer);
-        };
-    }, [query]);
+  return (
+    <div className="">
+      <MyCarousel />
 
-    return (
-        <div className="">
-            <MyCarousel />
+      <div className="flex justify-start flex-col mb-40 bg-white h-full">
+        <form
+          action=""
+          className="border sticky sm:mx-10 md:mx-40 lg:mx-50 xl:mx-60 border-gray-400 rounded-lg px-4 flex justify-between "
+        >
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            className=" w-96  px-4 pl-6 py-2 border-transparent text-bold outline-none"
+            placeholder="Search for restaurants and food"
+          />
 
-            <div className="flex justify-start flex-col mb-40 bg-white h-full">
-                <form
-                    action=""
-                    className="border sticky sm:mx-10 md:mx-40 lg:mx-50 xl:mx-60 border-gray-400 rounded-lg px-4 flex justify-between "
-                >
-                    <input
-                        type="text"
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
-                        className=" w-96  px-4 pl-6 py-2 border-transparent text-bold outline-none"
-                        placeholder="Search for restaurants and food"
-                    />
+          <button className="px-2 py-2">
+            <span>
+              <BiSearch />
+            </span>
+          </button>
+        </form>
 
-                    <button className="px-2 py-2">
-                        <span>
-                            <BiSearch />
-                        </span>
-                    </button>
-                </form>
-
-                <Link to="/search-item">
-                    <div className="">
-                        {suggestionList &&
-                            suggestionList.map((suggestion) => (
-                                <Suggestions suggestion={suggestion} />
-                            ))}
-                    </div>
-                </Link>
-                <Outlet />
-            </div>
-        </div>
-    );
+        <Link to="/search-item">
+          <div className="">
+            {suggestionList &&
+              suggestionList.map((suggestion) => (
+                <Suggestions suggestion={suggestion} />
+              ))}
+          </div>
+        </Link>
+        <Outlet />
+      </div>
+    </div>
+  );
 };
 
 export default Search;

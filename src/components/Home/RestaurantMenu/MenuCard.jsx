@@ -16,7 +16,7 @@ const MenuCard = ({ item }) => {
   };
 
   return (
-    <div className=" flex justify-evenly items-center basis-[700px] max-h-[180px] p-5 border-b  border-gray mx-28 overflow-hidden  hover:bg-slate-100 rounded-lg  hover:shadow-lg">
+    <div className=" flex justify-evenly items-center basis-[700px] max-h-[180px] p-5 border-b mb-10 border-gray mx-28 overflow-hidden  hover:bg-slate-100 rounded-lg  hover:shadow-lg">
       <div className="flex flex-col basis-[600px] mb-5">
         <h2 className="text-lg font-bold text-gray-600">{name}</h2>
         <p>
@@ -44,9 +44,9 @@ const MenuCard = ({ item }) => {
         </div>
 
         <button
-          className=" absolute text-blue-950 font-bold bottom-2 shadow-lg mx-[67px] text-sm px-6 py-1 bg-slate-50 rounded-lg"
+          className=" absolute text-blue-950 font-bold bottom-2 mb-14  shadow-lg mx-[67px] text-sm px-6 py-1 bg-slate-50 rounded-lg"
           onClick={() => {
-            addFoodItem(item);
+            addFoodItem(item); 
           }}
         >
           ADD

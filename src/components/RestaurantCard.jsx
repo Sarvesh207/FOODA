@@ -1,50 +1,48 @@
-import { IMG_CDN_URL } from "../constant.js";
 import { AiFillStar } from "react-icons/ai";
+import { IMG_CDN_URL } from "../constant.js";
 
 import React from "react";
 
 const RestaurantCard = ({
-    name,
-    cuisines,
-    cloudinaryImageId,
-    lastMileTravelString,
-    costForTwo,
-    avgRating,
-    sla,
+  name,
+  cuisines,
+  cloudinaryImageId,
+  lastMileTravelString,
+  costForTwo,
+  avgRating,
+  sla,
 }) => {
-    return (
-        <div className="w-[300px]  p-5 m-10   bg-white group-hover:opacity-100 lg:h-80 hover:shadow-2xl hover:lg:h-80 transition duration-300 ease-in-out hover:scale-110 hover:border-gray-950">
-            <div className="overflow-hidden  max-w-sm">
-                <img className="w-full" src={IMG_CDN_URL + cloudinaryImageId} />
-            </div>
-            <div className="">
-                <h2
-                    className=" text-base font-ProximaNova my-2
+  return (
+    <div className="w-[273px]  border mb-36  rounded-md my-10  bg-white group-hover:opacity-100 lg:h-64 hover:shadow-2xl hover:lg:h-64 transition duration-300 ease-in-out hover:scale-110 hover:border-gray-200">
+      <div className="overflow-hidden w-[273px] h-[182px] object-cover rounded-lg ">
+        <img className="w-full " src={IMG_CDN_URL + cloudinaryImageId} />
+      </div>
+      <div className="">
+        <h2
+          className=" text-[18px]  px-3 font-[700] text-gray-600  font-ProximaNova 
         "
-                >
-                    {name}
-                </h2>
-                <p className="text-xs text-gray-600 font-arial my-2 ">
-                    {cuisines.join(", ")}
-                </p>
+        >
+          {name.length > 20 ? `${name.substring(0, 20)}...` : name}
+        </h2>
 
-                <div className="flex justify-between my-3">
-                    <div className="flex justify-evenly mx-1 bg-green-600 text-white p-1 ">
-                        <span className="text-xs">{avgRating}</span>
-                        <span>
-                            <AiFillStar />
-                        </span>
-                    </div>
-
-                    <span className="text-xs text-gray-600">
-                        {sla?.slaString}
-                    </span>
-                    <span className="text-xs mx-1 text-gray-600">
-                        {costForTwo}
-                    </span>
-                </div>
+        <div className="flex items-center  px-3 justify-start gap-1 font-[700] text-gray-600 text-[16px] ">
+          <div className="flex justify-center items-center w-fit gap-1">
+            <div className=" bg-green-600 text-white w-fit rounded-full   p-[3px]">
+              {" "}
+              <AiFillStar className=" text-sm  " />
             </div>
+            <span>{avgRating}</span>
+          </div>
+
+          <span>.{sla?.slaString}</span>
         </div>
-    );
+        <p className="text-[16px] font-200 px-3 text-gray-600 w-fit overflow-hidden nowrap   ">
+          {cuisines.join(", ").length > 30
+            ? `${cuisines.join(", ").substring(0, 30)}...`
+            : cuisines.join(", ")}
+        </p>
+      </div>
+    </div>
+  );
 };
 export default RestaurantCard;

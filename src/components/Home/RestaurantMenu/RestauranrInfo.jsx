@@ -14,7 +14,7 @@ const RestauranrInfo = (restaurant) => {
         <p className=" text-gray-600"> {restaurant.areaName}</p>
         <div className="flex justify-start items-center gap-x-2 text-gray-600 mt-2">
           <TbBike />
-          <p> {restaurant.feeDetails.message}</p>
+          {/* <p> {restaurant.feeDetails.message}</p> */}
         </div>
         <div>
           <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 mt-3 gap-x-3  ">

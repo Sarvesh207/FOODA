@@ -7,7 +7,7 @@ const Suggestions = ({ suggestion }) => {
     <div className=" flex items-center sm:mx-20 md:mx-40  lg:mx-60  mt-6 rounded-lg hover:bg-slate-100 ">
       <div>
         <img
-          className="w-32 rounded-lg "
+          className="w-[64px] h-[64px] rounded-lg "
           src={IMG_CDN_URL + suggestion?.cloudinaryId}
           alt="img"
         />
