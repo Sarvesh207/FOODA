@@ -62,21 +62,22 @@ const LandingPage = () => {
   }, []);
 
   return (
-    <div className="flex sm:flex-col md:flex-row lg:flex-row lg:items-center flex-col h-screen xl:mx-auto bg-[#ffff]">
-      <div className=" md:max-w-[600px]  lg:px-5 lg:w-[600px] 2xl:px-10 py-32 relative">
+    <div className="flex md:flex-col  lg:flex-row lg:items-center flex-col xl:mx-auto bg-[#ffff]">
+      <div className=" md:max-w-[600px] sm:p-5  lg:px-5 lg:w-[600px] 2xl:px-10 sm:py-16 lg:py-32 relative">
         <div className="2xl:w-4/5 ">
-          <div className="flex items-center gap-3 text-white lg:text-black text-shadow">
+          <div className="flex items-center lg:justify-start md:justify-center gap-3 md:mx-auto text-white lg:text-black text-shadow">
             <img
               src={COMPANY_LOGO}
               alt="img"
               className="h-[60px] rounded-full border border-black"
             />
           </div>
-          <div className="mt-10 mb-4 text-shadow">
-            <h2 className="font-ProximaNovaSemiBold text-3xl text-white lg:text-[#282c3f]">
+
+          <div className=" font-ProximaNovaSemiBold text-shadow">
+            <h2 className="font-ProximaNovaSemiBold  md:text-xl lg:text-3xl  text-[#282c3f]">
               {ChangingText}
             </h2>
-            <p className="font-ProximaNovaThin text-2xl text-white lg:text-[#686b78] mt-1">
+            <p className="font-ProximaNovaThin  sm:text-sm lg:text-2xl  text-[#686b78] ">
               Order food from favourite restaurants near you.
             </p>
           </div>
@@ -149,7 +150,7 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
-      <div className="lg:max-w-[900px] md:max-w-[600px]">
+      <div className="lg:max-w-[500px] xl:max-w-[800px] md:mx-auto md:max-w-[400px]">
         <img src={LANDING_PAGE_IMAGE} className="w-full" alt="" />
       </div>
     </div>
