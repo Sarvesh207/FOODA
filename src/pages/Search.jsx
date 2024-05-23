@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import MyCarousel from "../components/Search/MyCarousel";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useParams } from "react-router-dom";
 import Suggestions from "../components/Search/Suggestions";
 import { CORSPROXY } from "../utils/constants";
 import { useSelector } from "react-redux";
+import DishCard from "../components/DishCard";
+import Container from "../components/container/Container";
 
 const Search = () => {
   const [query, setQuery] = useState("");
   const [suggestionList, setSuggetionList] = useState([]);
+  const [fetchedData, setFetchedData] = useState([]);
   const { lat, lng } = useSelector((store) => store.location.userLocation);
+  console.log(fetchedData);
 
   const getSuggestions = async () => {
     const url = `https://www.swiggy.com/dapi/restaurants/search/suggest?lat=${lat}&lng=${lng}&str=${query}&trackingId=undefined`;
@@ -28,6 +32,25 @@ const Search = () => {
       clearTimeout(timer);
     };
   }, [query]);
+
+  const getQueryData = async () => {
+    const response = await fetch(
+      `https://www.swiggy.com/dapi/restaurants/search/v3?lat=${lat}&lng=${lng}&str=${queryString}&trackingId=null&submitAction=SUGGESTION`
+    );
+    const data = await response.json();
+    console.log(data);
+  };
+
+  const handleSuggestionClick = async (suggestionText) => {
+    setQuery(suggestionText); // Update the query state to reflect the clicked suggestion
+    const url = `https://www.swiggy.com/dapi/restaurants/search/v3?lat=${lat}&lng=${lng}&str=${suggestionText}&trackingId=null&submitAction=SUGGESTION`;
+    const response = await fetch(url);
+    const data = await response.json();
+    setFetchedData(data.data.cards[1]?.groupedCard?.cardGroupMap?.DISH?.cards);
+
+    console.log(data.data.cards[1]?.groupedCard?.cardGroupMap?.DISH?.cards);
+    // Handle the data as needed
+  };
 
   return (
     <div className="">
@@ -53,15 +76,21 @@ const Search = () => {
           </button>
         </form>
 
-        <Link to="/search-item">
-          <div className="">
-            {suggestionList &&
-              suggestionList.map((suggestion) => (
+        <div className="">
+          {suggestionList &&
+            suggestionList.map((suggestion) => (
+              <div
+                key={suggestion?.text}
+                onClick={() => handleSuggestionClick(suggestion?.text)}
+              >
                 <Suggestions suggestion={suggestion} />
-              ))}
-          </div>
-        </Link>
-        <Outlet />
+              </div>
+            ))}
+        </div>
+
+        <Container>
+          <DishCard />
+        </Container>
       </div>
     </div>
   );

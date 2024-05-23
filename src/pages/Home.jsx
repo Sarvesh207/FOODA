@@ -14,6 +14,7 @@ import "../CSS/index.css";
 const Home = () => {
     const [restaurant, banner] = useRestaurants();
 
+
     const dispatch = useDispatch();
     useEffect(() => {
         if (restaurant) {

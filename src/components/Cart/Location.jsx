@@ -10,7 +10,7 @@ const Location = () => {
     const dispatch = useDispatch();
 
     const getLocationsSuggestions = async () => {
-        const url = CORSPROXY+encodeURIComponent(`https://www.swiggy.com/dapi/misc/place-autocomplete?input=${query}&types=`)
+        const url = (`https://www.swiggy.com/dapi/misc/place-autocomplete?input=${query}&types=`)
         const res = await fetch(
 
             url
@@ -33,7 +33,7 @@ const Location = () => {
 
     const fetchAddress = async (place_id) => {
         try {
-            const url = CORSPROXY+encodeURIComponent( `https://www.swiggy.com/dapi/misc/address-recommend?place_id=${place_id}`)
+            const url = ( `https://www.swiggy.com/dapi/misc/address-recommend?place_id=${place_id}`)
             const res = await fetch(
                url
             );

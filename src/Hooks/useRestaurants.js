@@ -11,6 +11,8 @@ const useRestaurants = () => {
   }, []);
 
   async function getRestaurants() {
+
+    if(!userLocation) return 
     try {
       const { lat, lng } = userLocation;
       const url = `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat}&lng=${lng}&sortBy=RELEVANCE&page_type=DESKTOP_WEB_LISTING`;
@@ -37,8 +39,8 @@ const useRestaurants = () => {
         return [restaurantsData, bannerData];
       };
 
-      const [ResData, BannerData] = await checkJsonData(jsonData);
-      console.log(ResData)
+      const [ResData, BannerData] =  checkJsonData(jsonData);
+      console.log(ResData, BannerData)
 
       setRestarunts(ResData);
       setBanner(BannerData);
