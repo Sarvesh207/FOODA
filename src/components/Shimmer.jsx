@@ -2,27 +2,27 @@ import React from "react";
 import { TailSpin } from "react-loader-spinner";
 
 const Shimmer = () => {
-    const loadingSentences = [
-        "Hunting down tasty treasures just around you...",
-        "Looking for great food near you...",
-        "Searching for tasty eats nearby...",
-        "Exploring delicious options around you...",
-        "Hunting for fantastic local flavors...",
-        "Scouting out great food in your vicinity...",
-        "On the lookout for mouthwatering meals close by...",
-        "Seeking out scrumptious dishes near you...",
-        "In the mood for amazing eats around the corner...",
-        "Finding delectable cuisine in your neighborhood...",
-        "Craving something delicious just a stone's throw away...",
-        "Discovering tasty treats near your location...",
-    ];
-    function getRandomSentence() {
-        const randomIndex = Math.floor(Math.random() * loadingSentences.length);
-        return loadingSentences[randomIndex];
-    }
+    // const loadingSentences = [
+    //     "Hunting down tasty treasures just around you...",
+    //     "Looking for great food near you...",
+    //     "Searching for tasty eats nearby...",
+    //     "Exploring delicious options around you...",
+    //     "Hunting for fantastic local flavors...",
+    //     "Scouting out great food in your vicinity...",
+    //     "On the lookout for mouthwatering meals close by...",
+    //     "Seeking out scrumptious dishes near you...",
+    //     "In the mood for amazing eats around the corner...",
+    //     "Finding delectable cuisine in your neighborhood...",
+    //     "Craving something delicious just a stone's throw away...",
+    //     "Discovering tasty treats near your location...",
+    // ];
+    // function getRandomSentence() {
+    //     const randomIndex = Math.floor(Math.random() * loadingSentences.length);
+    //     return loadingSentences[randomIndex];
+    // }
 
-    
-    const randomSentence = getRandomSentence();
+
+    // const randomSentence = getRandomSentence();
 
     return (
         <>
@@ -39,7 +39,7 @@ const Shimmer = () => {
 
                 <div>
                     <h1 className="text-gray-300 font-palanquin text-3xl">
-                       {randomSentence}
+                        Looking for great food near you...
                     </h1>
                 </div>
             </div>
