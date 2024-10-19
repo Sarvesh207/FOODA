@@ -9,12 +9,15 @@ import useRestaurant from "../../../utils/useRestaurant.js";
 
 import RestauranrInfo from "./RestauranrInfo.jsx";
 import RestaurantMenuList from "./RestaurantMenuList.jsx";
+import {  toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 const RestaurantMenu = () => {
   const params = useParams();
   const id = params.id;
 
   const restaurant = useRestaurant(id);
+  
 
   const dispatch = useDispatch();
 

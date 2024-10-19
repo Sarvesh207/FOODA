@@ -19,6 +19,8 @@ import "./CSS/index.css";
 import SideCard from "./components/Cart/SideCard.jsx";
 import UnderCondtruction from "./components/UnderCondtruction.jsx";
 import Shimmer from "./components/Shimmer.jsx";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   const userLocation = useSelector((store) => store.location.userLocation);
@@ -44,6 +46,19 @@ const App = () => {
           <Route path="/" element={<LandingPage />} />
         )}
       </Routes>
+      <ToastContainer
+        position="bottom-left"
+        autoClose={500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition:Bounce
+      />
       <Footer />
     </Router>
   );

@@ -3,6 +3,7 @@ import FormatPrice from "../../../Helper/FormatPrice";
 import { IMG_CDN_URL } from "../../../constant";
 import { addItem } from "../../../utils/cartSlice.js";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 const MenuCard = ({ item }) => {
   const { id, name, description, price, imageId } = item;
@@ -10,8 +11,6 @@ const MenuCard = ({ item }) => {
   const dispatch = useDispatch();
 
   const addFoodItem = (item) => {
-   
-
     dispatch(addItem(item));
   };
 
@@ -26,9 +25,10 @@ const MenuCard = ({ item }) => {
             </del>
           </span>
           <span className="text-lg font-medium text-gray-600">
-          <FormatPrice  price={isNaN(price * 2) ? 500 * 20 : (price * 2) / 2} />
+            <FormatPrice
+              price={isNaN(price * 2) ? 500 * 20 : (price * 2) / 2}
+            />
           </span>
-          
         </p>
         <p className="text-xs font-thin text-gray-600">{description}</p>
       </div>
@@ -46,7 +46,11 @@ const MenuCard = ({ item }) => {
         <button
           className=" absolute text-blue-950 font-bold bottom-2 mb-14  shadow-lg mx-[67px] text-sm px-6 py-1 bg-slate-50 rounded-lg"
           onClick={() => {
-            addFoodItem(item); 
+            addFoodItem(item);
+            toast.success("Item added to cart", {
+              className: "bg-green-500 text-white", 
+              progressClassName: "bg-green-700", 
+            });
           }}
         >
           ADD
