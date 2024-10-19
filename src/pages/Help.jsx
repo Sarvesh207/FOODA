@@ -33,7 +33,7 @@ function Help() {
           Let's take a step ahead and help you better.
         </p>
       </div>
-      <div className="bg-white mx-auto flex justify-center w-[80%] h-[100vh] p-11">
+      <div className="bg-white mx-auto flex justify-center w-[80%] overflow-y-auto   h-[100vh] p-11">
         <div className="flex-auto w-20 bg-[#EDF1F7]">
           {accordionMap.map((item, index) => (
             <p key={index}>
@@ -56,7 +56,7 @@ function Help() {
             {activeAccordion !== null && (
               <div>
                 {/* Display only the questions from the active category */}
-                <p className="text-xl font-semibold">
+                <p className="text-2xl font-medium">
                   {categories[activeAccordion].category}
                 </p>
 
@@ -64,7 +64,7 @@ function Help() {
                   <div key={index} className="border-b">
                     <button
                       onClick={() => toggleQuestion(index)}
-                      className="flex justify-between w-full py-4 text-left focus:outline-none focus:ring"
+                      className="flex justify-between w-full py-4 text-left "
                     >
                       <span className="font-semibold">{item.question}</span>
                       <span>

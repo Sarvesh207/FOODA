@@ -103,7 +103,7 @@ const FoodItem = () => {
                                         <div className="flex">
                                             <button
                                                 type="button"
-                                                className="font-medium text-indigo-600 hover:text-indigo-500"
+                                                className="font-medium text-[#fc8019] hover:text-[#fdaa65]"
                                                 onClick={() =>
                                                     handleRemoveItem(item)
                                                 }
@@ -120,7 +120,7 @@ const FoodItem = () => {
             </div>
             <div className="flex items-center justify-center mt-7">
                 <button
-                    className="flex items-center justify-center h-10 rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 "
+                    className="flex items-center justify-center h-10 rounded-md border border-transparent bg-[#fc8019] px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-[#fdaa65] "
                     onClick={() => handleClearCart()}
                 >
                     Clear Cart
@@ -142,7 +142,7 @@ const FoodItem = () => {
                 <div className="mt-6">
                     <a
                         href="#"
-                        className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                        className="flex items-center justify-center rounded-md border border-transparent bg-[#fc8019] px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-[#fdaa65]"
                     >
                         Checkout
                     </a>
@@ -153,7 +153,7 @@ const FoodItem = () => {
                         <Link to="/">
                             <button
                                 type="button"
-                                className="font-medium text-indigo-600 hover:text-indigo-500 px-3"
+                                className="font-medium text-[#fc8019] hover:text-[#fdaa65] px-3"
                             >
                                 Continue Shopping
                                 <span aria-hidden="true"> &rarr;</span>

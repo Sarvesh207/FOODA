@@ -7,6 +7,8 @@ import {
   Search,
   Home,
   Error,
+  Login,
+  SignUp,
   Contact,
 } from "./pages/index.js";
 import Help from "./pages/Help.jsx";
@@ -33,7 +35,8 @@ const App = () => {
             <Route path="/help" element={<Help />} />
             <Route path="/offer" element={<UnderCondtruction />} />
             <Route path="/contact" element={<UnderCondtruction />} />
-            <Route path="/signin" element={<UnderCondtruction />} />
+            <Route path="/signin" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="*" element={<Error />} />
           </>
