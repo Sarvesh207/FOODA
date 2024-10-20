@@ -22,10 +22,11 @@ const UserForm = ({ formType }) => {
   });
 
   return (
-    <div className="max-w-md mx-auto p-4 bg-white rounded shadow-md my-40">
-      <h2 className="text-2xl font-bold mb-4 text-center">
+    <div className="min-h-screen flex items-center justify-center ">
+    <div className="w-[500px] mx-auto p-4 bg-black opacity-75 rounded shadow-md ">
+      <h2 className="text-2xl font-bold mb-4 text-center text-white">
         {formType === "login" ? "Login" : "Sign Up"}
-      </h2>
+      </h2> 
       <Formik
         initialValues={{
           email: "",
@@ -43,7 +44,7 @@ const UserForm = ({ formType }) => {
             <div className="mb-4">
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium text-white"
               >
                 Email:
               </label>
@@ -62,14 +63,14 @@ const UserForm = ({ formType }) => {
             <div className="mb-4">
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium text-white"
               >
                 Password:
               </label>
               <Field
                 type="password"
                 name="password"
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#FC8E32] focus:border-[#FC8E32] sm:text-sm"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 bg-gray-100 rounded-md shadow-sm focus:outline-none focus:ring-[#FC8E32] focus:border-[#FC8E32] sm:text-sm"
               />
               <ErrorMessage
                 name="password"
@@ -83,7 +84,7 @@ const UserForm = ({ formType }) => {
                 <div className="mb-4">
                   <label
                     htmlFor="mobile"
-                    className="block text-sm font-medium text-gray-700"
+                    className="block text-sm font-medium text-white"
                   >
                     Mobile Number:
                   </label>
@@ -102,7 +103,7 @@ const UserForm = ({ formType }) => {
                 <div className="mb-4">
                   <label
                     htmlFor="confirmPassword"
-                    className="block text-sm font-medium text-gray-700"
+                    className="block text-sm font-medium text-white"
                   >
                     Confirm Password:
                   </label>
@@ -134,6 +135,7 @@ const UserForm = ({ formType }) => {
           </Form>
         )}
       </Formik>
+    </div>
     </div>
   );
 };

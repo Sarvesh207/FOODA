@@ -113,19 +113,24 @@
 
 
 }
-
-/* .sliderWrapper .slideButton:hover{
-    background: #404040;
+.full-background-singUp {
+  background-image: url('./black-stone.png');
+  background-size: cover;           
+  background-position: center;     
+  width: 100%;                      
+  height: 100vh;                     
+  position: relative;                
 }
 
-.sliderWrapper .slideButton#prevSlide{
-    left: -25px;
-    display: none;
-}
-.sliderWrapper .slideButton#nextSlide{
-    right: -25px;
 
-} */
+.full-background-login {
+  background-image: url('./loginbackground.png');
+  background-size: cover;           
+  background-position: center;     
+  width: 100%;                      
+  height: 100vh;                     
+  position: relative;                
+}
 
 @media (min-width: 300px) {
   .slider__item2 {

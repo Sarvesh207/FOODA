@@ -33,7 +33,7 @@ function Help() {
           Let's take a step ahead and help you better.
         </p>
       </div>
-      <div className="bg-white mx-auto flex justify-center w-[80%] overflow-y-auto   h-[100vh] p-11">
+      <div className=" sliderWrapper bg-white mx-auto flex justify-center w-[80%] overflow-y-auto   h-[100vh] p-11">
         <div className="flex-auto w-20 bg-[#EDF1F7]">
           {accordionMap.map((item, index) => (
             <p key={index}>
